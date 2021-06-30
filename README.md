@@ -2,36 +2,31 @@
 
 #### 介绍
 模仿网页版UI布局，使用WPF进行布局和功能练习。实现了界面布局、转换器、控件模板、触发器、主题切换、数据绑定等功能。一套做下来能加深对WPF的基本功能入门级别认识，熟能生巧。
+环境：VS2019 + .NET 5
 
-#### 软件架构
-软件架构说明
+#### 软件说明
+模仿网页的地址：https://demos.creative-tim.com/bootstrap-wizard/index.html
 
+主题切换只实现了背景切换，没有按网页版的进行内容替换，多准备几个Page或window 即可。
+由于Mvvm.Light 不完全支持 .NET 5，所以自行实现了 ICommand 和 INotifyPropertyChanged，用于命令事件绑定和数据绑定。
 
-#### 安装教程
+#### 已实现功能
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+1.  数据双向绑定
+2.  页面切换（不过使用Frame 切换会有声音，暂不清楚如何去掉）
+3.  数据验证 ValidationTemplate 
+4.  属性转换器 
+5.  主题背景切换 （Grid.Backgroud.ItemSource 竟然不支持 Binding Converter，总提示相对路径错误，而Image.Source 却正常，只能先使用 静态资源绑定 + 触发器 处理了）
+6.  数据触发器
+7.  本地图片读取
 
-#### 使用说明
+#### 问题
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+1. 模型验证，使用了Validator.TryValidateObject ，能手动触发验证，但是没有办法触发界面的 ValidationException，目前还没有找到办法
+2. Grid 背景替换， 使用动态绑定且使用Converter 转换，会报路径错误；于是使用了静态资源，如上所述 
 
-#### 参与贡献
+#### 效果图
 
-1.  Fork 本仓库
-2.  新建 Feat_xxx 分支
-3.  提交代码
-4.  新建 Pull Request
+> 原始效果图存放在 EffectPicture\Raw
 
-
-#### 特技
-
-1.  使用 Readme\_XXX.md 来支持不同的语言，例如 Readme\_en.md, Readme\_zh.md
-2.  Gitee 官方博客 [blog.gitee.com](https://blog.gitee.com)
-3.  你可以 [https://gitee.com/explore](https://gitee.com/explore) 这个地址来了解 Gitee 上的优秀开源项目
-4.  [GVP](https://gitee.com/gvp) 全称是 Gitee 最有价值开源项目，是综合评定出的优秀开源项目
-5.  Gitee 官方提供的使用手册 [https://gitee.com/help](https://gitee.com/help)
-6.  Gitee 封面人物是一档用来展示 Gitee 会员风采的栏目 [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
+> 实际效果图存放在 EffectPicture\Complete
